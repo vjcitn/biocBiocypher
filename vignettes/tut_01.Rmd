@@ -1,0 +1,111 @@
+---
+title: "A1: initial tutorial for biocBiocypher"
+author: "Vincent J. Carey, stvjc at channing.harvard.edu"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{A1: initial tutorialfor biocBiocypher}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+```{r setup,echo=FALSE,message=FALSE,results="hide"}
+library(biocBiocypher)
+library(BiocStyle)
+library(DT)
+```
+
+# Introduction
+
+This vignette goes through material at the "Adding data"
+[tutorial document](https://biocypher.org/tutorial.html#section-1-adding-data).
+Our objective is to use R and python together, with `r Biocpkg("basilisk")`
+managing the python infrastructure.
+
+We will simulate records with schematized information about 10 proteins and then
+use `write_nodes` to generate a CSV file.  
+
+# The primary interface
+
+`loadBiocypher` connects the Biocypher modules to R via basilisk and
+reticulate.  A completely isolated miniconda environment, currently using
+Python 3.9, manages all the python code.
+
+```{r dobas}
+library(biocBiocypher)
+bcobj = loadBiocypher()
+bcobj
+```
+
+## The data generator
+
+```{r lkgen}
+gen = bcobj$generator_ref
+names(gen)
+```
+
+The following R code generates records on 10 proteins:
+```{r dolapp}
+prots = lapply(1:10, function(x) gen$Protein())
+names(prots[[1]])
+prots[[1]]$properties
+```
+
+This list is not known to the python main module (`__main__`) however.  We need to use
+
+```{r dopy}
+reticulate::py_run_string("proteins = [Protein() for _ in range(10)]")
+names(reticulate::py)  # symbols known to main
+```
+
+## Producing the graph nodes
+
+Several configuration files are defined for this specific tutorial.
+```{r config}
+bc_config_path = system.file("tutorial_0.5.11", 
+     "01_biocypher_config.yaml", package="biocBiocypher")
+schema_config_path = system.file("tutorial_0.5.11", 
+     "01_schema_config.yaml", package="biocBiocypher")
+readLines(schema_config_path)
+```
+
+These configurations are loaded into the main
+interface: 
+
+```{r tomain}
+bc = bcobj$biocypher_ref
+bc_configd = bc$BioCypher(
+    biocypher_config_path=bc_config_path,
+    schema_config_path=schema_config_path
+)
+```
+The `node_generator` was written to use a globally defined variable `proteins`.
+That was defined above with `py_run_string`.
+
+```{r look}
+bc_configd$write_nodes(gen$node_generator())
+o1 = dir("biocypher-out", full=TRUE)[1]
+fi = dir(o1, full=TRUE,patt="part")
+he = strsplit(readLines(dir(o1, full=TRUE, patt="head"), warn=FALSE), ";")[[1]]
+dat = read.delim(fi, sep=";", h=FALSE)
+names(dat) = he
+library(DT)
+datatable(dat)
+```
+
+
+
+```{r domo}
+cat(reticulate::py_capture_output(bc_configd$summary()))
+```
+
+
+
+
+
+
