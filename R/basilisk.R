@@ -1,6 +1,7 @@
 # necessary for python module control
 #' python declarations
 #' @import basilisk
+#' @import reticulate
 bsklenv <- basilisk::BasiliskEnvironment(
   envname = "bsklenv",
   pkgname = "biocBiocypher",
@@ -28,6 +29,8 @@ loadBiocypher = function() {
 }
 
 #' printer for refs
+#' @param x biocypher_refs instance
+#' @param \dots not used
 #' @export
 print.biocypher_refs = function(x, ...) {
  cat("biocypher_refs produced with basilisk.\n")

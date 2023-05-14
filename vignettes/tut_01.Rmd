@@ -75,23 +75,34 @@ readLines(schema_config_path)
 ```
 
 These configurations are loaded into the main
-interface: 
+interface.  We "update" the YAML in `bc_config_path`
+so that the output folder is user-selectable.
+The default output folder is a temporary folder.
 
 ```{r tomain}
 bc = bcobj$biocypher_ref
 bc_configd = bc$BioCypher(
-    biocypher_config_path=bc_config_path,
+    biocypher_config_path=update_bc_config(bc_config_path),
     schema_config_path=schema_config_path
 )
 ```
 The `node_generator` was written to use a globally defined variable `proteins`.
 That was defined above with `py_run_string`.
 
+We write out the nodes:
+
 ```{r look}
 bc_configd$write_nodes(gen$node_generator())
-o1 = dir("biocypher-out", full=TRUE)[1]
-fi = dir(o1, full=TRUE,patt="part")
-he = strsplit(readLines(dir(o1, full=TRUE, patt="head"), warn=FALSE), ";")[[1]]
+```
+
+We can retrieve the configured output directory from `bc_configd`.
+In this case the files are a 'header' and a semicolon-delimited
+data file.  We parse and put them together in the following,
+then create a searchable HTML table.
+```{r dod}
+od= bc_configd$base_config$output_directory
+fi = dir(od, full=TRUE,patt="part")
+he = strsplit(readLines(dir(od, full=TRUE, patt="head"), warn=FALSE), ";")[[1]]
 dat = read.delim(fi, sep=";", h=FALSE)
 names(dat) = he
 library(DT)
@@ -104,7 +115,38 @@ datatable(dat)
 cat(reticulate::py_capture_output(bc_configd$summary()))
 ```
 
+# Summary
 
+The main Biocypher processes we have examined thus far include
+
+- configuring metadata about protein annotations to be handled, in YAML
+
+```
+protein:                            # mapping
+  represented_as: node              # schema configuration
+  preferred_id: uniprot             # uniqueness
+  input_label: uniprot_protein      # connection to input stream
+```
+
+- configuring the "back end", in this case 'offline', also in YAML
+
+
+- transforming a stream of protein identifier data into graph nodes
+```
+bc_configd$write_nodes(gen$node_generator())
+```
+
+The node information was serialized to a tabular format.
+
+In the next tutorial we will combine information from different
+annotation types.
+
+
+# Session information
+
+```{r lksess}
+sessionInfo()
+```
 
 
 

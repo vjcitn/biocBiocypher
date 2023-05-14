@@ -13,6 +13,7 @@ Description: interface from R/Bioc to Biocypher, using basilisk
 License: Artistic-2.0
 Encoding: UTF-8
 Depends: R (>= 3.6), dplyr, basilisk
+Imports: reticulate, yaml
 Suggests: knitr, testthat, BiocStyle, DT
 VignetteBuilder: knitr
 biocViews: Infrastructure

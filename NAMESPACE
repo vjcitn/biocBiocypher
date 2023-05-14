@@ -2,4 +2,5 @@
 
 S3method(print,biocypher_refs)
 export(loadBiocypher)
+export(update_bc_config)
 import(basilisk)
