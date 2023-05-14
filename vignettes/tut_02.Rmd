@@ -1,0 +1,143 @@
+---
+title: "A2: using biocBiocypher to unite information from different namespaces"
+author: "Vincent J. Carey, stvjc at channing.harvard.edu"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{A2: using biocBiocypher to unite information from different namespaces}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+```{r setup,echo=FALSE,message=FALSE,results="hide"}
+library(biocBiocypher)
+library(BiocStyle)
+library(DT)
+```
+
+# Introduction
+
+This vignette moves beyond the A1 vignette, which simply imported
+information on simulated proteins identified by Uniprot identifiers.
+
+Now we will use two identifier types: Uniprot and NCBI Entrez.
+
+# Setup
+
+
+```{r dobas}
+library(biocBiocypher)
+bcobj = loadBiocypher()
+bcobj
+```
+
+## The data generator
+
+```{r lkgen}
+gen = bcobj$generator_ref
+names(gen)
+```
+
+In the previous vignette, we used `Protein()`.
+Now we will use `EntrezProtein()`.
+
+```{r dolapp}
+prots = lapply(1:10, function(x) gen$EntrezProtein())
+names(prots[[1]])
+prots[[1]]$properties
+```
+
+The python code to work with Entrez and Uniprot
+together is:
+```{r litco}
+twop = "proteins = [
+    p for sublist in zip(
+        [Protein() for _ in range(10)],
+        [EntrezProtein() for _ in range(10)],
+    ) for p in sublist
+]"
+tt = tempfile()
+writeLines(twop, tt)
+```
+
+We run the code to get the protein metadata and sequences.
+
+```{r dopy}
+reticulate::py_run_file(tt)
+
+names(reticulate::py)  # symbols known to main
+```
+
+## Producing the graph nodes
+
+As before, we use
+the configuration files defined for this specific tutorial.
+```{r config}
+bc_config_path = system.file("tutorial_0.5.11", 
+     "02_biocypher_config.yaml", package="biocBiocypher")
+schema_config_path = system.file("tutorial_0.5.11", 
+     "02_schema_config.yaml", package="biocBiocypher")
+readLines(schema_config_path)
+```
+
+These configurations are loaded into the main
+interface.  We "update" the YAML in `bc_config_path`
+so that the output folder is user-selectable.
+The default output folder is a temporary folder.
+
+```{r tomain}
+bc = bcobj$biocypher_ref
+bc_configd = bc$BioCypher(
+    biocypher_config_path=update_bc_config(bc_config_path),
+    schema_config_path=schema_config_path
+)
+```
+The `node_generator` was written to use a globally defined variable `proteins`.
+That was defined above with `py_run_string`.
+
+We write out the nodes:
+
+```{r look}
+bc_configd$write_nodes(gen$node_generator())
+```
+
+We retrieve the configured output directory from `bc_configd`.
+The files are again a 'header' and a semicolon-delimited
+data file.  We parse and put them together in the following,
+then create a searchable HTML table.
+```{r dod}
+od= bc_configd$base_config$output_directory
+fi = dir(od, full=TRUE,patt="part")
+he = strsplit(readLines(dir(od, full=TRUE, patt="head"), warn=FALSE), ";")[[1]]
+dat = read.delim(fi, sep=";", h=FALSE)
+names(dat) = he
+library(DT)
+datatable(dat)
+```
+
+
+
+```{r domo}
+cat(reticulate::py_capture_output(bc_configd$summary()))
+```
+
+# Summary
+
+Data generation in this vignette uses two namespaces to produce
+graph nodes.
+
+
+# Session information
+
+```{r lksess}
+sessionInfo()
+```
+
+
+
+
