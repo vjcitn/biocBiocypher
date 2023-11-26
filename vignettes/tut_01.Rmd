@@ -106,7 +106,7 @@ he = strsplit(readLines(dir(od, full=TRUE, patt="head"), warn=FALSE), ";")[[1]]
 dat = read.delim(fi, sep=";", h=FALSE)
 names(dat) = he
 library(DT)
-datatable(dat)
+datatable(dat, options = list(scrollX = TRUE))
 ```
 
 
