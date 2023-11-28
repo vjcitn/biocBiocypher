@@ -7,7 +7,7 @@ bsklenv <- basilisk::BasiliskEnvironment(
   pkgname = "biocBiocypher",
   packages = c("python==3.9", "numpy==1.23.1", "pandas==1.4.4"),
   pip = c(
-    "biocypher==0.5.11"
+    "biocypher==0.5.23"
     )
   )
 

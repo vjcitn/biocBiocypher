@@ -1,7 +1,7 @@
 Package: biocBiocypher
 Date: 2022-10-01
 Title: interface from R/Bioc to Biocypher, using basilisk
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(
         "Vincent", "Carey", role = c("aut", "cre"),
