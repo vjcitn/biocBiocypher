@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A1: initial tutorial for biocBiocypher • biocBiocypher</title>
+<title>A2: using biocBiocypher to unite information from different namespaces • biocBiocypher</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="A1: initial tutorial for biocBiocypher">
+<script src="../pkgdown.js"></script><meta property="og:title" content="A2: using biocBiocypher to unite information from different namespaces">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -67,21 +67,21 @@
 
 
 
-      </header><script src="tut_01_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="tut_01_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="tut_01_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="tut_01_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="tut_01_files/datatables-binding-0.33/datatables.js"></script><link href="tut_01_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="tut_01_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="tut_01_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="tut_01_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-<script src="tut_01_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
+      </header><script src="tut_02_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="tut_02_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="tut_02_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="tut_02_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="tut_02_files/datatables-binding-0.33/datatables.js"></script><link href="tut_02_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="tut_02_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="tut_02_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="tut_02_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="tut_02_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>A1: initial tutorial for biocBiocypher</h1>
+      <h1 data-toc-skip>A2: using biocBiocypher to unite information from different namespaces</h1>
                         <h4 data-toc-skip class="author">Vincent J. Carey, stvjc at channing.harvard.edu</h4>
             
             <h4 data-toc-skip class="date">August 05, 2024</h4>
       
 
-      <div class="hidden name"><code>tut_01.Rmd</code></div>
+      <div class="hidden name"><code>tut_02.Rmd</code></div>
 
     </div>
 
@@ -90,27 +90,22 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>This vignette goes through material at the “Adding data” <a href="https://biocypher.org/tutorial.html#section-1-adding-data" class="external-link">tutorial document</a>. Our objective is to use R and python together, with <em><a href="https://bioconductor.org/packages/3.19/basilisk" class="external-link">basilisk</a></em> managing the python infrastructure.</p>
-<p>We will simulate records with schematized information about 10 proteins and then use <code>write_nodes</code> to generate a CSV file.</p>
+<p>This vignette moves beyond the A1 vignette, which simply imported information on simulated proteins identified by Uniprot identifiers.</p>
+<p>Now we will use two identifier types: Uniprot and NCBI Entrez.</p>
 </div>
 <div class="section level2">
-<h2 id="the-primary-interface">The primary interface<a class="anchor" aria-label="anchor" href="#the-primary-interface"></a>
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p><code>loadBiocypher</code> connects the Biocypher modules to R via basilisk and reticulate. A completely isolated miniconda environment, currently using Python 3.9, manages all the python code.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biocBiocypher</span><span class="op">)</span></span>
-<span><span class="va">bcobj</span> <span class="op">=</span> <span class="fu"><a href="../reference/loadBiocypher.html">loadBiocypher</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## + /home/vincent/.cache/R/basilisk/1.16.0/0/bin/conda create --yes --prefix /home/vincent/.cache/R/basilisk/1.16.0/biocBiocypher/0.0.2/bsklenv 'python=3.9' --quiet -c conda-forge</span></span></code></pre>
-<pre><code><span><span class="co">## + /home/vincent/.cache/R/basilisk/1.16.0/0/bin/conda install --yes --prefix /home/vincent/.cache/R/basilisk/1.16.0/biocBiocypher/0.0.2/bsklenv 'python=3.9' -c conda-forge</span></span></code></pre>
-<pre><code><span><span class="co">## + /home/vincent/.cache/R/basilisk/1.16.0/0/bin/conda install --yes --prefix /home/vincent/.cache/R/basilisk/1.16.0/biocBiocypher/0.0.2/bsklenv -c conda-forge 'python=3.9' 'python=3.9' 'numpy=1.23.1' 'pandas=1.4.4'</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bcobj</span></span></code></pre></div>
+<span><span class="va">bcobj</span> <span class="op">=</span> <span class="fu"><a href="../reference/loadBiocypher.html">loadBiocypher</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">bcobj</span></span></code></pre></div>
 <pre><code><span><span class="co">## biocypher_refs produced with basilisk.</span></span>
 <span><span class="co">##  use $biocypher_ref for modules, $generator_ref for simulator</span></span></code></pre>
 <div class="section level3">
 <h3 id="the-data-generator">The data generator<a class="anchor" aria-label="anchor" href="#the-data-generator"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gen</span> <span class="op">=</span> <span class="va">bcobj</span><span class="op">$</span><span class="va">generator_ref</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gen</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "BioCypher"                    "Complex"                     </span></span>
@@ -120,25 +115,36 @@
 <span><span class="co">##  [9] "ProteinProteinInteraction"    "r"                           </span></span>
 <span><span class="co">## [11] "random"                       "RandomPropertyProtein"       </span></span>
 <span><span class="co">## [13] "RandomPropertyProteinIsoform" "string"</span></span></code></pre>
-<p>The following R code generates records on 10 proteins:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">prots</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">gen</span><span class="op">$</span><span class="fu">Protein</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<p>In the previous vignette, we used <code>Protein()</code>. Now we will use <code>EntrezProtein()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">prots</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">gen</span><span class="op">$</span><span class="fu">EntrezProtein</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">prots</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "get_id"         "get_label"      "get_properties" "id"            </span></span>
 <span><span class="co">## [5] "label"          "properties"</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prots</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">properties</span></span></code></pre></div>
 <pre><code><span><span class="co">## $sequence</span></span>
-<span><span class="co">## [1] "GMFDKPDEKETCPNDSILKKIHHYMDVSRVDHNDILVDADGGEWSNCLACAKQIDTAWMYKTYF"</span></span>
+<span><span class="co">## [1] "FTQGRWSQCMHIRVKKEMYEHGFLDGPMIHSRPPDQLQHNAEAPNNDEGDPLNRFLWFDIDADAEFIASLRMIGLCAAEGHMQGNLSVQLLEWMSWIPYECLPPFDIGKETTW"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $description</span></span>
-<span><span class="co">## [1] "y k m s n u s c i y"</span></span>
+<span><span class="co">## [1] "m l f r v w j v o x"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $taxon</span></span>
 <span><span class="co">## [1] "9606"</span></span></code></pre>
-<p>This list is not known to the python main module (<code>__main__</code>) however. We need to use</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_run.html" class="external-link">py_run_string</a></span><span class="op">(</span><span class="st">"proteins = [Protein() for _ in range(10)]"</span><span class="op">)</span></span>
+<p>The python code to work with Entrez and Uniprot together is:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">twop</span> <span class="op">=</span> <span class="st">"proteins = [</span></span>
+<span><span class="st">    p for sublist in zip(</span></span>
+<span><span class="st">        [Protein() for _ in range(10)],</span></span>
+<span><span class="st">        [EntrezProtein() for _ in range(10)],</span></span>
+<span><span class="st">    ) for p in sublist</span></span>
+<span><span class="st">]"</span></span>
+<span><span class="va">tt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="va">twop</span>, <span class="va">tt</span><span class="op">)</span></span></code></pre></div>
+<p>We run the code to get the protein metadata and sequences.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_run.html" class="external-link">py_run_file</a></span><span class="op">(</span><span class="va">tt</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/reticulate/reference/py.html" class="external-link">py</a></span><span class="op">)</span>  <span class="co"># symbols known to main</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "BioCypher"                    "Complex"                     </span></span>
 <span><span class="co">##  [3] "EntrezProtein"                "Interaction"                 </span></span>
@@ -152,17 +158,19 @@
 <div class="section level3">
 <h3 id="producing-the-graph-nodes">Producing the graph nodes<a class="anchor" aria-label="anchor" href="#producing-the-graph-nodes"></a>
 </h3>
-<p>Several configuration files are defined for this specific tutorial.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<p>As before, we use the configuration files defined for this specific tutorial.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bc_config_path</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"tutorial_0.5.11"</span>, </span>
-<span>     <span class="st">"01_biocypher_config.yaml"</span>, package<span class="op">=</span><span class="st">"biocBiocypher"</span><span class="op">)</span></span>
+<span>     <span class="st">"02_biocypher_config.yaml"</span>, package<span class="op">=</span><span class="st">"biocBiocypher"</span><span class="op">)</span></span>
 <span><span class="va">schema_config_path</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"tutorial_0.5.11"</span>, </span>
-<span>     <span class="st">"01_schema_config.yaml"</span>, package<span class="op">=</span><span class="st">"biocBiocypher"</span><span class="op">)</span></span>
+<span>     <span class="st">"02_schema_config.yaml"</span>, package<span class="op">=</span><span class="st">"biocBiocypher"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">schema_config_path</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "protein:"                         "    represented_as: node"        </span></span>
-<span><span class="co">## [3] "    preferred_id: uniprot"        "    input_label: uniprot_protein"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "protein:"                                          </span></span>
+<span><span class="co">## [2] "    represented_as: node"                          </span></span>
+<span><span class="co">## [3] "    preferred_id: uniprot"                         </span></span>
+<span><span class="co">## [4] "    input_label: [uniprot_protein, entrez_protein]"</span></span></code></pre>
 <p>These configurations are loaded into the main interface. We “update” the YAML in <code>bc_config_path</code> so that the output folder is user-selectable. The default output folder is a temporary folder.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bc</span> <span class="op">=</span> <span class="va">bcobj</span><span class="op">$</span><span class="va">biocypher_ref</span></span>
 <span><span class="va">bc_configd</span> <span class="op">=</span> <span class="va">bc</span><span class="op">$</span><span class="fu">BioCypher</span><span class="op">(</span></span>
 <span>    biocypher_config_path<span class="op">=</span><span class="fu"><a href="../reference/update_bc_config.html">update_bc_config</a></span><span class="op">(</span><span class="va">bc_config_path</span><span class="op">)</span>,</span>
@@ -170,11 +178,11 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p>The <code>node_generator</code> was written to use a globally defined variable <code>proteins</code>. That was defined above with <code>py_run_string</code>.</p>
 <p>We write out the nodes:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bc_configd</span><span class="op">$</span><span class="fu">write_nodes</span><span class="op">(</span><span class="va">gen</span><span class="op">$</span><span class="fu">node_generator</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>We can retrieve the configured output directory from <code>bc_configd</code>. In this case the files are a ‘header’ and a semicolon-delimited data file. We parse and put them together in the following, then create a searchable HTML table.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p>We retrieve the configured output directory from <code>bc_configd</code>. The files are again a ‘header’ and a semicolon-delimited data file. We parse and put them together in the following, then create a searchable HTML table.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">od</span><span class="op">=</span> <span class="va">bc_configd</span><span class="op">$</span><span class="va">base_config</span><span class="op">$</span><span class="va">output_directory</span></span>
 <span><span class="va">fi</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="va">od</span>, full<span class="op">=</span><span class="cn">TRUE</span>,patt<span class="op">=</span><span class="st">"part"</span><span class="op">)</span></span>
 <span><span class="va">he</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="va">od</span>, full<span class="op">=</span><span class="cn">TRUE</span>, patt<span class="op">=</span><span class="st">"head"</span><span class="op">)</span>, warn<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, <span class="st">";"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
@@ -183,7 +191,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT" class="external-link">DT</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">datatable</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
 <div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["R0D4S7","D8P1K8","A3W4O5","C1D3J4","G1O3W3","Y5W6G4","X0Q6T5","L6S5I7","F8R5F1","A1F7A3"],["'SPAAGFRPNQERHWYCALVQIWDRLPVGMKARLEDCKTRNRLKLFVLHPSVDMAPFSAAPWLNTLCLFMTWFGPYVKMQKQVFRREHVDNWMQWMVQTGVCTHWESQLRWPMIGPGYYLWYFFDHNWIPMDRGLNKPFCGWFNRFGVTWNRQILHIVEHHTHTTCTHWAERNHNEWRAIWGNFEPAVCSLMEYTCDTQYGAVCNMWNICFRYYWRM'","'LNKGPPVTKEYDQCCAFLSWTFGKQWTPPPHIFSGHATSWWHFTAWNYAYWDVTV'","'KITFIDFMDGELLITDCWDDNIIHVRAWVEEIKGHEYFAFQFEFCLFWHVNPSCEEGWMLFCSGDMFPPCAQRHSPQYCREAQCRLRLGTVTGWSQMRWHLYTKMRLFQYPPIEGSKVTCSVEKMCGAEVTMWKESNVFHHGSSEMSCWLEHAAHNMCGIFMLLTAFESNKWMRSKLFIVYANFFDYWYFPIYYGRKDEWMYVCTIHNHTIDHT'","'RIGIEILYRILKAQTMDIAAVQFMKRPLSSTQMCLCMAEGWWDKDTILHCRSWVDFHKHRFAGAIPSPPITGDIGMYHHIHAVFITTVARNNHMPQALHFANIIQDWKYGSRSWKLKMLTDPMQGNVANSIMIADTKHKQNHCTDFVCFTCWDYTQWPDQTLAATRKLFNSVIVIP'","'SKPNEINWDFSPITLKSEIAARYVHVFHASWMLDRRCLSWLMLKLIMWLTMKCQLFNADDRCVPLQELGEANEGWWWNLVLSPWGALWINALDGKGLEYFDCESEFMYSKDVDEQQLDNYMQRVRSGWQFLAFRFNEYDCCPETPCCVESETGTDTETQLKSVFFPSGQFEMAACIRLKCDAMERHYPTYCARGYNVMWDFVYPEEYCPDEYMLPFKMKDAGNRMLIMS'","'MNEQWYVPVLDNKCGVNWAGPMKYWNYQNQETFHMVVQLDHVDDLACEMQVKTSQNTFKPMAANCTDVRNEMHACSVAAWAWIHSMSCPQCVNDMEKE'","'QQWIWYPRSAGCFQYVIHWVVMMNIAENDLPRLVTDSWKQCWTAMMGDSQIVWLPWKQLNMATVTHRWHQRIIHDMWFTVREFCAKGNEHQDNSAVFQHFASSMKGWHLDPQLFAGWMKPDEGFQGCWGLYSNNTPVHVEDELVVNKCNY'","'ERKWFARFTCPPSPSNYWVWAGQLWSIISRGQEAYLEPTPKWCINFIHQDEGPLHVMLGPTRQYTQEKMGPSKRATCQCYSEDCRQCNYHAEHHNHFQKSPQVRSNIAMPDDMFWCSHSIMEMMVIRHNAKPQDKRVQSIQQKAEACIKWWTVVELTRDWGFMMGDKWAMDVYMSLDHGWYCCRSALSQHALDKCTVHWTQNDVCDFVDYEYPVMMKWCGYHHLQQNRKNWAGNQPSFGND'","'MKTWATKRPHPKDVHYQHTGWCEPLCCEVYLGVCMPTSHQGHGPSSIWVAGGQERTYESLNIWKTVTSYSQKNEAYFYCMIKNPAGMDKWCPFVVALYTQYKTK'","'AIFRDSPRVCMPTSGALWEMAFKTFLWFCHIFAPDVSHLYLCFEGASMVSHGEIVYCSNVTNMNMGGF'"],["'n x d m z x u u c i'","'k s n i a l l e t h'","'r k k m i q x g u v'","'x g k d o l h a w z'","'t u x a y c k h b z'","'b y g s a p c e a d'","'a h b k u f d y i d'","'z g j u x q r a w o'","'j d p z b l n h k k'","'k z x h q p w p y i'"],["'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'"],["'R0D4S7'","'D8P1K8'","'A3W4O5'","'C1D3J4'","'G1O3W3'","'Y5W6G4'","'X0Q6T5'","'L6S5I7'","'F8R5F1'","'A1F7A3'"],["'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'"],["'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>:ID<\/th>\n      <th>sequence<\/th>\n      <th>description<\/th>\n      <th>taxon<\/th>\n      <th>id<\/th>\n      <th>preferred_id<\/th>\n      <th>:LABEL<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":":ID","targets":1},{"name":"sequence","targets":2},{"name":"description","targets":3},{"name":"taxon","targets":4},{"name":"id","targets":5},{"name":"preferred_id","targets":6},{"name":":LABEL","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Q1U8E9","182475","M6D2C1","990139","A2A7Y5","969105","S3O1I1","858885","Z8G3R4","63037","I3V1V7","578215","D7Z0R6","273681","W2Y3F3","116305","E9O6N5","550841","G9X2X4","594189"],["'EMAVVNEKELTPWYTKRDISFQQLKNPCKRSFPIKKWQTIKSTMCWGIRQVETIIRAPQFMSDPYGDGARQVIVVSIAFLWMEKPHMNFQHPQVEKSDYSYYVSECSNPVFWMPFKIYSNEVRHWRIKHFHRCWCTDFSLIWMVVYSHEPVPKYGPGMLISRRVPCHEVTFRDLHIWTERNCCQRTMYIIWCKHLQFTNLHMKDWMPQ'","'LTKSMMHLVTCTYLLKGRAIDVKCSPKVYVGLSCCVSSEWVFHGNDLCQQKRCICPKMDNWLLVPNVWHVGM'","'QHFATQRPAQYFPITLFILRIDDFKFNQASPSLMQNVAPPGQLDSISTHHTSAHKHTAEEVPTCAWRNQVQYRVAHYNLGHLRDPMYYAQVVQFTWHSFAMHSRSHNFIYRLAMKQRT'","'WNGPGQWWVTHCIACEQTTFNYEDSRGPPMCTRYRNKDQFKEDCNGYNLHGHQFWKNINFAIDEGLLNGVCWEACHCILSIAGYDSPWCVPSQHDCVCNFNQHWEWCGWMNDYEAEFRLSRKIKYEFGWEEPKRTTYDYDSHTFKPFPING'","'QDQKQSYYSWNYLETSTSIYPWVKYRIQPMHCSPNYGEYVLMIKNYPHVGCSLNTSESSMGGVGYNGIKAARYNMNWRVHCRWLHRHPCTMYKLDQHESQARWANPICRLEFNERLQVETIYKSPLSCRDLEMVFNSAPTAYGSDICRHCIRWQVHCQFPVVLCCATFMTNASSNMGMSYFYA'","'ILWSQSQNLNYDLYGNMPPIPMETFMIAEEHQRHLQWDKWGLRCRMMHTPMDRNHDPAMNWHDYGTTRYRIM'","'VMVVLHGEFVMSDKTCDNKAINHPHYPNCISFAPINSSNFQIEGVKNTDEKMQCKFALCWCWCYPQSETLGPIFLNGDCCWTPHRDTIEKEYLSARTLSQRELDGTGGLMMILQSIVWFSPPWPDHWCWRHPPCIHLWAKMPIEWYPG'","'PFELNIRNRLKPPLMHQRDLLHVGMGMHYCCQVFLSECMCNLWADDGTHISDFMYWFMNPMAIQFRQYISYSATIMDLQRHLNPPMKEQQKK'","'KPHWDRQEYCIFSGWIKFCWFMMMVGFIVIHEYDIKEVYYLPHAPETNPQIDQKAFMAQLRQIWVAHANNHQSGLYESVEQTLQDEPGDPGCRDLIPKPKVIFCLNEIIRIVLWQHDANYEELICIYL'","'IFQKRMTYERSKDSLINPKLCWNIIPRCACRQADKYHACCTWQYSWNDTALQQQHGKLRQGKDHNPGRYNLDMLPRWCGEWIHLHNEPEMQYTKGSDNGMEVQCGPSCIRITFEFEDYVYGHAGMMQCLYPISQYWM'","'WCTAWSMVDPVRHMWCDRDVEPLQYVNQYTNVFCALPQVFVLGWKGKQNLWCKVLRKAGDSVMPYWFWCDRMPDAVGFKFLPDCQHYEKQTQVQAAYFGTHYSLQRPLPEMMRQLRFMVLNVQCYQEQPTMLTVYEHGWMPCRHYMYWTSHKFCF'","'FPKARFQFEFWCYYCAMRINDPLEVGSYCCQKQMTKFFFNEKRDIDCCWYVNIWMESPFAWWKPYNPATLYLMKMEMYNKVCDAGTRHHPALSQHKTRWWPMQAKSTIGCRWMRWPWNLNPLHQKPTCPRMGKPDRNWHISGACWKRVVIWYWITIIQMQGMNIWKSKWSRNSKITEMLLQKPYTKMNKVFWSGGMGNMLSMTVPYFERIYCHEIKVFHWRTSSPNNWPAQYYLYDF'","'QEPNFITNGCKFYWPCVYWYIDYFSKCRMCHLLGHIHRMVGHSQTCTWEEQVLCAQSELSRMRVVMMWAWTEHDWVNGGGVENDPHGGWN'","'FFNMNRDEVQRNTMKAMAWQMIPCNSDTTHVSSGTMVQIVKMFPHIMYATCDGPQHQGKCGSCSTNPWNNRDPTLQDWAWNFYWFGDDDHHRTHMVHPHTSHDRRDDRVYNGSWPQRWQRLMMNCTPKIQNGSGATPQQKFTVDLRGNLHVYTDEWLD'","'TQIEVKSAQAEGCKSPKHRNGLGPWRIDHGRGKFVGQHFHNSHFEIKDRNHKRDMGDGNQGWEAKLWVIRRGTILWFKEIDHCDHMKANEWTVALIAETNMHGTILPCWQSSGMSSFIDNDYTQTTGGMSMMIRCKHADLMRKEWNTRCPFSCWITHFEFVYNSADHGVSFSQELCGYCRIDLHRLALKDIIWIWAVRVEYHTLIRMTPCGHCQLVLCFAAAWVYEYCMVNVNWVF'","'EHIEDVWWLNGGGKFGECTWHWTEQEIAYVIDGNIYLPFETVRIRFWPDERSFSTTHGGGCTSDVWGNWQWNSTNVNWMWDHEKELYQQCETLFYDIPPNMLHCPIPSESTIQVLDWEQEDKANFPCGWCTPLILYYHTLRQMVQTPLLTHGSKDDQIGEHNHHWEVEYKGWYDIPTRKWQCDMFIWTGEASSWMGVIINHFKSSQKNGYYWLDLYAEPWCFDWTK'","'HNSCELLRWLPIEPLMEYLQISKLPRLCCKFSHHHQEWLGLGDVIASICCMGKVAKNQRK'","'ELSVAGDEWLVHFWMGPFNGAAKCEECDRYPIWPGGRKTAGYQFWEWYEFVDRTRGMKVWGPNLAIKPRQLWGVQGQIRVKTAREGSHHSQMYCQYYCWEIVCSDPAGIWTNCRMFFDHRNCWIQPQANMHCALGHGRDTMQIMRCVQKFHNQPVLADLYCFATIQLVFEPMPLQMKMCGRSAYWTMIPTAYIDSDSQNSIDCMKMNLIWLLKLD'","'SKMLAKCGMAAMRGEYTNNYISSIKIIFTHHADHCHGKVPCYCVFRRTNPQNGIEGQIFNKHWNRVAAVFWHEWNYREWETSTSTYFHEHTAHDWWQSMYATIGENC'","'WMVHQTWGPWGSEPWDAENYWFTIQCSIQCMFYWKSVEVVPYHVGNMMTLYGRHNQSDDAEGHQYDPWEKEFSTRCWQQTTHVAKAHYPIYPRTQWWTILDFLHDWGVGRKDAMYNIAMEMNWHNYWEAICWPDPACPTEYGWEEMTGCCVLPWYHSIQCCMIYGKALSIRNHAWFIDLRLNDVDTPMNTCTFWTDGGMCLNHNGYELHGSTDPPRNH'"],["'i a p l n e a u k f'","'u p f c g x j z z v'","'l q m w s m c e j z'","'n z v g x i n e c f'","'z v y l h x n w d g'","'d h z n j o x e p w'","'g o k c x x k b g l'","'q r e i a a e d z a'","'q e h r b f t x x j'","'z g j z g m d n k f'","'b o c c c c f a r j'","'h a m c n o w s a p'","'l f s p r x u u v k'","'b c j s p k d d a o'","'e p w z c r n k c d'","'p c p r n l o e t k'","'j e u g d g r k n z'","'r c d r x g y p r t'","'o h z o o q o s l t'","'u w r w r z d z i a'"],["'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'","'9606'"],["'Q1U8E9'","'182475'","'M6D2C1'","'990139'","'A2A7Y5'","'969105'","'S3O1I1'","'858885'","'Z8G3R4'","'63037'","'I3V1V7'","'578215'","'D7Z0R6'","'273681'","'W2Y3F3'","'116305'","'E9O6N5'","'550841'","'G9X2X4'","'594189'"],["'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'","'uniprot'"],["'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'","'BiologicalEntity|ChemicalEntityOrProteinOrPolypeptide|Entity|NamedThing|Polypeptide|Protein|ThingWithTaxon'"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>:ID<\/th>\n      <th>sequence<\/th>\n      <th>description<\/th>\n      <th>taxon<\/th>\n      <th>id<\/th>\n      <th>preferred_id<\/th>\n      <th>:LABEL<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":":ID","targets":1},{"name":"sequence","targets":2},{"name":"description","targets":3},{"name":"taxon","targets":4},{"name":"id","targets":5},{"name":"preferred_id","targets":6},{"name":":LABEL","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_capture_output.html" class="external-link">py_capture_output</a></span><span class="op">(</span><span class="va">bc_configd</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Showing ontology structure based on https://github.com/biolink/biolink-model/raw/v3.2.1/biolink-model.owl.ttl</span></span>
 <span><span class="co">## entity</span></span>
@@ -196,26 +204,12 @@
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
-<p>The main Biocypher processes we have examined thus far include</p>
-<ul>
-<li>configuring metadata about protein annotations to be handled, in YAML</li>
-</ul>
-<pre><code><span><span class="va">protein</span><span class="op">:</span>                            <span class="co"># mapping</span></span>
-<span>  <span class="va">represented_as</span><span class="op">:</span> <span class="va">node</span>              <span class="co"># schema configuration</span></span>
-<span>  <span class="va">preferred_id</span><span class="op">:</span> <span class="va">uniprot</span>             <span class="co"># uniqueness</span></span>
-<span>  <span class="va">input_label</span><span class="op">:</span> <span class="va">uniprot_protein</span>      <span class="co"># connection to input stream</span></span></code></pre>
-<ul>
-<li><p>configuring the “back end”, in this case ‘offline’, also in YAML</p></li>
-<li><p>transforming a stream of protein identifier data into graph nodes</p></li>
-</ul>
-<pre><code><span><span class="va">bc_configd</span><span class="op">$</span><span class="fu">write_nodes</span><span class="op">(</span><span class="va">gen</span><span class="op">$</span><span class="fu">node_generator</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-<p>The node information was serialized to a tabular format.</p>
-<p>In the next tutorial we will combine information from different annotation types.</p>
+<p>Data generation in this vignette uses two namespaces to produce graph nodes.</p>
 </div>
 <div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## R version 4.4.0 Patched (2024-04-29 r86495)</span></span>
 <span><span class="co">## Platform: x86_64-pc-linux-gnu</span></span>
